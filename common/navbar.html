@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow fixed-top mb-3">
+  <a class="navbar-brand" href="/index.html">Star's Tools </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/index.html"><i class="fa-solid fa-star"></i> Home </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/games/guess_lang.html"><i class="fa-solid fa-globe"></i> Guess The Country </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/games/real_or_fake.html"><i class="fa-solid fa-masks-theater"></i> Real Or Fake Titles <span class="sr-only">(current)</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/games/guess_num.html"><i class="fa-solid fa-masks-theater"></i> Guess The Number... </a>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-compass"></i>
+            Other
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#"> N/A </a>
+          <a class="dropdown-item" href="#"> N/A </a>
+          <a class="dropdown-item" href="#"> N/A </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+  var origin = window.location.origin;
+  var page_location = window.location.href.replace(origin + '/', '').trim();
+
+  $('.navbar_links a[href*="' + page_location + '"]').addClass('active').siblings().removeClass('active');
+  
+  if (page_location == "" || null) {
+    $('.navbar_links a[href="/"]').addClass('active').siblings().removeClass('active');
+  }
+</script>

@@ -29,12 +29,13 @@ footer {
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  margin-top: 100px;
 }
 
 .home-title-card {
   text-align: center;
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;

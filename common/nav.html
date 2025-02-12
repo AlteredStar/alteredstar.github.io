@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg bg-dark shadow fixed-top mb-3" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand px-2" href="/">Star's Tools</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+      <ul class="navbar-nav navbar_links ml-auto">
+        <li class="nav-item px-1">
+          <a class="nav-link" href="/"><i class="fa-solid fa-star px-2"></i>Home <span class="visually-hidden">(current)</span></a>
+        </li>
+
+        <li class="nav-item px-1">
+          <a class="nav-link" href="/games/guess_lang.html"><i class="fa-solid fa-globe px-2"></i>Guess The Country</a>
+        </li>
+
+        <li class="nav-item px-1">
+          <a class="nav-link" href="/games/real_or_fake.html"><i class="fa-solid fa-masks-theater px-2"></i>Real Or Fake Titles</a>
+        </li>
+
+        <li class="nav-item px-1">
+          <a class="nav-link" href="/games/guess_num.html"><i class="fa-solid fa-calculator px-2"></i>Guess The Number...</a>
+        </li>
+
+        <li class="nav-item dropdown px-1">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-compass px-2"></i>Other</a>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item" href="#"> N/A </a></li>
+            <li><a class="dropdown-item" href="#"> N/A </a></li>
+            <li><a class="dropdown-item" href="#"> N/A </a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<script>
+  var page_location = window.location.href.replace(window.location.origin + '/', '').trim();
+
+  $('.navbar_links a[href*="' + page_location + '"]').addClass('active').siblings().removeClass('active');
+  
+  if (page_location == "" || null) {
+    $('.navbar_links a[href="/"]').addClass('active').siblings().removeClass('active');
+  }
+</script>

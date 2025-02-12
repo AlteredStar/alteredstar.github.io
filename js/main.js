@@ -1,4 +1,4 @@
 $(document).ready(() => {
-  $('.navbar_wraper').load('/common/navbar.html');    
+  $('.nav_wraper').load('/common/nav.html');    
   $('.footer_wraper').load('/common/footer.html');
 });

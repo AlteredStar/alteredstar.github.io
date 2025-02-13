@@ -11,7 +11,7 @@
  * @param {Function} [reviver] a custom function to modify the values
  * @returns {Array} a 2 dimensional array of `[entries][values]`
  */
-export function parse (csv, options, reviver = v => v) {
+function parse (csv, options, reviver = v => v) {
   const ctx = Object.create(null)
   ctx.options = options || {}
   ctx.reviver = reviver
@@ -122,7 +122,7 @@ export function parse (csv, options, reviver = v => v) {
  * @param {Function} [replacer] a custom function to modify the values
  * @returns {string} the CSV string
  */
-export function stringify (array, options = {}, replacer = v => v) {
+function stringify (array, options = {}, replacer = v => v) {
   const ctx = Object.create(null)
   ctx.options = options
   ctx.options.eof = ctx.options.eof !== undefined ? ctx.options.eof : true

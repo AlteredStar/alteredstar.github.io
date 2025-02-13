@@ -56,7 +56,9 @@ function choose(country) {
   }
 
   if (autoReroll.checked) {
-    generateNovel();
+    setTimeout(function (){
+      generateNovel();
+    }, 3000);
   }
 }
 
@@ -71,4 +73,8 @@ function randomNovel() {
 function generateNovel() {
   [currentCountry, currentNovel] = [randomCountry(), randomNovel()];
   $('#novelTitleDisplay').html(novelTitles[currentNovel][currentCountry]);
+  
+  $('#answerDisplay').html("");
+  $('#answerDisplay').removeClass("text-success");
+  $('#answerDisplay').removeClass("text-danger");
 }

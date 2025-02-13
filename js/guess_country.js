@@ -4,16 +4,14 @@ const Country = Object.freeze({
   KR: 2
 });
 
-var novelTitles, currentCountry = 0, currentNovel = 0;
+var novelTitles, currentCountry = -1, currentNovel = -1;
+var autoReroll = document.getElementById("toggleReroll");
 
 window.onload = async function() {
   let csv = "";
   await fetch('../js/novel_titles.csv')
     .then(res => res.text())
-    .then(contents => {
-      csv = contents;
-      console.log(csv);
-    });
+    .then(data => csv = data);
   
   novelTitles = parse(csv);
 
@@ -32,6 +30,19 @@ document.getElementById("KR").addEventListener('click', function() {
   choose(Country.KR);
 });
 
+document.getElementById("reroll").addEventListener('click', function() {
+  generateNovel();
+});
+
+document.getElementById("toggleReroll").addEventListener('click', function() {
+  if (autoReroll.checked) {
+    document.getElementById('reroll').style.visibility = 'hidden';
+  }
+  else {
+    document.getElementById('reroll').style.visibility = 'visible';
+  }
+});
+
 function choose(country) {
   if (currentCountry == country) {
     $('#answerDisplay').html("CORRECT");
@@ -43,7 +54,10 @@ function choose(country) {
     $('#answerDisplay').addClass("text-danger");
     $('#answerDisplay').removeClass("text-success");
   }
-  generateNovel();
+
+  if (autoReroll.checked) {
+    generateNovel();
+  }
 }
 
 function randomCountry() {

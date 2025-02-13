@@ -18,3 +18,10 @@
   transform: translate(-50%, -50%);
   color: white;
 }
+
+.flex-wrapper {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+}

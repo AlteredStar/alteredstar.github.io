@@ -16,6 +16,7 @@ window.onload = async function() {
   novelTitles = parse(csv);
 
   generateNovel();
+  clearDisplay();
 }
 
 $("#real").on('click', function() {
@@ -28,6 +29,7 @@ $("#fake").on('click', function() {
 
 $("#reroll").on('click', function() {
   generateNovel();
+  clearDisplay();
 });
 
 $("#toggleReroll").on('click', function() {

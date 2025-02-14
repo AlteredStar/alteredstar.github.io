@@ -17,6 +17,7 @@ window.onload = async function() {
   novelTitles = parse(csv);
 
   generateNovel();
+  clearDisplay();
 }
 
 $("#JP").on('click', function() {
@@ -51,6 +52,7 @@ $("#flagKR").on('click', function() {
 
 $("#reroll").on('click', function() {
   generateNovel();
+  clearDisplay();
 });
 
 $("#toggleReroll").on('click', function() {

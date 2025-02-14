@@ -60,6 +60,8 @@ $("#toggleReroll").on('click', function() {
   else {
     document.getElementById("reroll").style.visibility = 'visible';
   }
+
+  clearDisplay();
 });
 
 $("#defaultButtons").on('click', function() {
@@ -108,10 +110,17 @@ function choose(country) {
     $('#answerDisplay').removeClass("text-success");
   }
 
-  if (autoReroll.checked) {
+  if (autoReroll.checked && rerollSpeed != 0) {
     setTimeout(function (){
       generateNovel();
+      clearDisplay();
     }, rerollSpeed);
+  }
+  else {
+    generateNovel();
+    setTimeout(function (){
+      clearDisplay();
+    }, 300);
   }
 }
 
@@ -126,7 +135,9 @@ function randomNovel() {
 function generateNovel() {
   [currentCountry, currentNovel] = [randomCountry(), randomNovel()];
   $('#novelTitleDisplay').html(novelTitles[currentNovel][currentCountry]);
-  
+}
+
+function clearDisplay() {
   $('#answerDisplay').html("");
   $('#answerDisplay').removeClass("text-success");
   $('#answerDisplay').removeClass("text-danger");

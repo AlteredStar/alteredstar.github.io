@@ -21,12 +21,30 @@ window.onload = async function() {
 document.getElementById("JP").addEventListener('click', function() {
   choose(Country.JP);
 });
+document.getElementById("aespaJP").addEventListener('click', function() {
+  choose(Country.JP);
+});
+document.getElementById("flagJP").addEventListener('click', function() {
+  choose(Country.JP);
+});
 
 document.getElementById("CN").addEventListener('click', function() {
   choose(Country.CN);
 });
+document.getElementById("aespaCN").addEventListener('click', function() {
+  choose(Country.CN);
+});
+document.getElementById("flagCN").addEventListener('click', function() {
+  choose(Country.CN);
+});
 
 document.getElementById("KR").addEventListener('click', function() {
+  choose(Country.KR);
+});
+document.getElementById("aespaKR").addEventListener('click', function() {
+  choose(Country.KR);
+});
+document.getElementById("flagKR").addEventListener('click', function() {
   choose(Country.KR);
 });
 
@@ -45,6 +63,7 @@ document.getElementById("toggleReroll").addEventListener('click', function() {
 
 document.getElementById("defaultButtons").addEventListener('click', function() {
   $('#buttonPicker').html("Default Buttons");
+
   $('#defaultButtonGroup').show();
   $('#aespaButtonGroup').hide();
   $('#flagButtonGroup').hide();
@@ -52,16 +71,18 @@ document.getElementById("defaultButtons").addEventListener('click', function() {
 
 document.getElementById("aespaButtons").addEventListener('click', function() {
   $('#buttonPicker').html("Aespa Buttons");
-  $('#aespaButtonGroup').show();
+  
   $('#defaultButtonGroup').hide();
+  $('#aespaButtonGroup').show();
   $('#flagButtonGroup').hide();
 });
 
 document.getElementById("flagButtons").addEventListener('click', function() {
   $('#buttonPicker').html("Flag Buttons");
-  $('#flagButtonGroup').show();
+  
   $('#defaultButtonGroup').hide();
   $('#aespaButtonGroup').hide();
+  $('#flagButtonGroup').show();
 });
 
 function choose(country) {

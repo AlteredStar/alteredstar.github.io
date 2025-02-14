@@ -118,7 +118,7 @@ function choose(country) {
       clearDisplay();
     }, rerollSpeed);
   }
-  else {
+  else if (autoReroll.checked) {
     generateNovel();
     setTimeout(function (){
       clearDisplay();

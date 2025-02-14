@@ -78,7 +78,7 @@ function choose(status) {
       clearDisplay();
     }, rerollSpeed);
   }
-  else {
+  else if (autoReroll.checked) {
     generateNovel();
     setTimeout(function (){
       clearDisplay();

@@ -6,6 +6,7 @@ const Country = Object.freeze({
 
 var novelTitles, currentCountry = -1, currentNovel = -1;
 var autoReroll = document.getElementById("toggleReroll");
+var rerollSpeed = 2000;
 
 window.onload = async function() {
   let csv = "";
@@ -18,41 +19,41 @@ window.onload = async function() {
   generateNovel();
 }
 
-document.getElementById("JP").addEventListener('click', function() {
+$("#JP").on('click', function() {
   choose(Country.JP);
 });
-document.getElementById("aespaJP").addEventListener('click', function() {
+$("#aespaJP").on('click', function() {
   choose(Country.JP);
 });
-document.getElementById("flagJP").addEventListener('click', function() {
+$("#flagJP").on('click', function() {
   choose(Country.JP);
 });
 
-document.getElementById("CN").addEventListener('click', function() {
+$("#CN").on('click', function() {
   choose(Country.CN);
 });
-document.getElementById("aespaCN").addEventListener('click', function() {
+$("#aespaCN").on('click', function() {
   choose(Country.CN);
 });
-document.getElementById("flagCN").addEventListener('click', function() {
+$("#flagCN").on('click', function() {
   choose(Country.CN);
 });
 
-document.getElementById("KR").addEventListener('click', function() {
+$("#KR").on('click', function() {
   choose(Country.KR);
 });
-document.getElementById("aespaKR").addEventListener('click', function() {
+$("#aespaKR").on('click', function() {
   choose(Country.KR);
 });
-document.getElementById("flagKR").addEventListener('click', function() {
+$("#flagKR").on('click', function() {
   choose(Country.KR);
 });
 
-document.getElementById("reroll").addEventListener('click', function() {
+$("#reroll").on('click', function() {
   generateNovel();
 });
 
-document.getElementById("toggleReroll").addEventListener('click', function() {
+$("#toggleReroll").on('click', function() {
   if (autoReroll.checked) {
     document.getElementById("reroll").style.visibility = 'hidden';
   }
@@ -61,7 +62,7 @@ document.getElementById("toggleReroll").addEventListener('click', function() {
   }
 });
 
-document.getElementById("defaultButtons").addEventListener('click', function() {
+$("#defaultButtons").on('click', function() {
   $('#buttonPicker').html("Default Buttons");
 
   $('#defaultButtonGroup').show();
@@ -69,7 +70,7 @@ document.getElementById("defaultButtons").addEventListener('click', function() {
   $('#flagButtonGroup').hide();
 });
 
-document.getElementById("aespaButtons").addEventListener('click', function() {
+$("#aespaButtons").on('click', function() {
   $('#buttonPicker').html("Aespa Buttons");
   
   $('#defaultButtonGroup').hide();
@@ -77,12 +78,22 @@ document.getElementById("aespaButtons").addEventListener('click', function() {
   $('#flagButtonGroup').hide();
 });
 
-document.getElementById("flagButtons").addEventListener('click', function() {
+$("#flagButtons").on('click', function() {
   $('#buttonPicker').html("Flag Buttons");
   
   $('#defaultButtonGroup').hide();
   $('#aespaButtonGroup').hide();
   $('#flagButtonGroup').show();
+});
+
+$("#rerollSpeedSlider").on('input change', function() {
+  if ($(this).val() == 1) {
+    $("#rerollSpeedDisplay").html($(this).val() + " second");
+  }
+  else {
+    $("#rerollSpeedDisplay").html($(this).val() + " seconds");
+  }
+  rerollSpeed = $(this).val() * 1000;
 });
 
 function choose(country) {
@@ -100,7 +111,7 @@ function choose(country) {
   if (autoReroll.checked) {
     setTimeout(function (){
       generateNovel();
-    }, 3000);
+    }, rerollSpeed);
   }
 }
 

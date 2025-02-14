@@ -36,11 +36,32 @@ document.getElementById("reroll").addEventListener('click', function() {
 
 document.getElementById("toggleReroll").addEventListener('click', function() {
   if (autoReroll.checked) {
-    document.getElementById('reroll').style.visibility = 'hidden';
+    document.getElementById("reroll").style.visibility = 'hidden';
   }
   else {
-    document.getElementById('reroll').style.visibility = 'visible';
+    document.getElementById("reroll").style.visibility = 'visible';
   }
+});
+
+document.getElementById("defaultButtons").addEventListener('click', function() {
+  $('#buttonPicker').html("Default Buttons");
+  $('#defaultButtonGroup').show();
+  $('#aespaButtonGroup').hide();
+  $('#flagButtonGroup').hide();
+});
+
+document.getElementById("aespaButtons").addEventListener('click', function() {
+  $('#buttonPicker').html("Aespa Buttons");
+  $('#aespaButtonGroup').show();
+  $('#defaultButtonGroup').hide();
+  $('#flagButtonGroup').hide();
+});
+
+document.getElementById("flagButtons").addEventListener('click', function() {
+  $('#buttonPicker').html("Flag Buttons");
+  $('#flagButtonGroup').show();
+  $('#defaultButtonGroup').hide();
+  $('#aespaButtonGroup').hide();
 });
 
 function choose(country) {

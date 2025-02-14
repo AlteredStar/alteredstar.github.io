@@ -82,7 +82,7 @@ function choose(status) {
     generateNovel();
     setTimeout(function (){
       clearDisplay();
-    }, 300);
+    }, 500);
   }
 }
 

@@ -122,7 +122,7 @@ function choose(country) {
     generateNovel();
     setTimeout(function (){
       clearDisplay();
-    }, 300);
+    }, 500);
   }
 }
 

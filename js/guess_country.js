@@ -20,35 +20,32 @@ window.onload = async function() {
   clearDisplay();
 }
 
-$("#JP").on('click', function() {
+function selectJP() {
   choose(Country.JP);
-});
-$("#aespaJP").on('click', function() {
-  choose(Country.JP);
-});
-$("#flagJP").on('click', function() {
-  choose(Country.JP);
-});
+}
+$("#JP").on('click', selectJP());
+$("#aespaJP").on('click', selectJP());
+$("#flagJP").on('click', selectJP());
+$("#foodJP").on('click', selectJP());
+$("#protagJP").on('click', selectJP());
 
-$("#CN").on('click', function() {
+function selectCN() {
   choose(Country.CN);
-});
-$("#aespaCN").on('click', function() {
-  choose(Country.CN);
-});
-$("#flagCN").on('click', function() {
-  choose(Country.CN);
-});
+}
+$("#CN").on('click', selectCN());
+$("#aespaCN").on('click', selectCN());
+$("#flagCN").on('click', selectCN());
+$("#foodCN").on('click', selectCN());
+$("#protagCN").on('click', selectCN());
 
-$("#KR").on('click', function() {
+function selectKR() {
   choose(Country.KR);
-});
-$("#aespaKR").on('click', function() {
-  choose(Country.KR);
-});
-$("#flagKR").on('click', function() {
-  choose(Country.KR);
-});
+}
+$("#KR").on('click', selectKR());
+$("#aespaKR").on('click', selectKR());
+$("#flagKR").on('click', selectKR());
+$("#foodKR").on('click', selectKR());
+$("#protagKR").on('click', selectKR());
 
 $("#reroll").on('click', function() {
   generateNovel();

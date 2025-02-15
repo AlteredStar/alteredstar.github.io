@@ -19,13 +19,23 @@ window.onload = async function() {
   clearDisplay();
 }
 
-$("#real").on('click', function() {
+function selectReal() {
   choose(Status.REAL);
-});
+}
+$("#real").on('click', selectReal());
+$("#amongUsReal").on('click', selectReal());
+$("#robinReal").on('click', selectReal());
+$("#mobaReal").on('click', selectReal());
+$("#eldenRingReal").on('click', selectReal());
 
-$("#fake").on('click', function() {
+function selectFake() {
   choose(Status.FAKE);
-});
+}
+$("#fake").on('click', selectFake());
+$("#amongUsFake").on('click', selectFake());
+$("#robinFake").on('click', selectFake());
+$("#mobaFake").on('click', selectFake());
+$("#eldenRingFake").on('click', selectFake());
 
 $("#reroll").on('click', function() {
   generateNovel();

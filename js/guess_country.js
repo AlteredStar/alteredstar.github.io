@@ -61,12 +61,12 @@ function selectKR() {
   choose(Country.KR);
 }
 
-$("#reroll").on('click', function() {
+$("#reroll").on('click', () => {
   generateTitle();
   clearDisplay();
 });
 
-$("#toggleReroll").on('click', function() {
+$("#toggleReroll").on('click', () => {
   if (autoReroll.checked) {
     document.getElementById("reroll").style.visibility = 'hidden';
   }
@@ -79,43 +79,43 @@ $("#toggleReroll").on('click', function() {
 
 
 //buttons skin settings
-$("#defaultButtons").on('click', function() {
+$("#defaultButtons").on('click', () => {
   $('#buttonPicker').html("Default Buttons");
 
   hideButtonsExcept("default");
 });
 
-$("#manhuaButtons").on('click', function() {
+$("#manhuaButtons").on('click', () => {
   $('#buttonPicker').html("Manhua Buttons");
   
   hideButtonsExcept("manhua");
 });
 
-$("#aespaButtons").on('click', function() {
+$("#aespaButtons").on('click', () => {
   $('#buttonPicker').html("Aespa Buttons");
   
   hideButtonsExcept("aespa");
 });
 
-$("#flagButtons").on('click', function() {
+$("#flagButtons").on('click', () => {
   $('#buttonPicker').html("Flag Buttons");
   
   hideButtonsExcept("flag");
 });
 
-$("#foodButtons").on('click', function() {
+$("#foodButtons").on('click', () => {
   $('#buttonPicker').html("Food Buttons");
   
   hideButtonsExcept("food");
 });
 
-$("#protagButtons").on('click', function() {
+$("#protagButtons").on('click', () => {
   $('#buttonPicker').html("Protagonist Buttons");
   
   hideButtonsExcept("protag");
 });
 
-$("#gachaButtons").on('click', function() {
+$("#gachaButtons").on('click', () => {
   $('#buttonPicker').html("Gacha Buttons");
   
   hideButtonsExcept("gacha");
@@ -157,7 +157,7 @@ function hideButtonsExcept(buttonGroup) {
   }
 }
 
-$("#rerollSpeedSlider").on('input change', function() {
+$("#rerollSpeedSlider").on('input change', () => {
   if ($(this).val() == 1) {
     $("#rerollSpeedDisplay").html($(this).val() + " second");
   }

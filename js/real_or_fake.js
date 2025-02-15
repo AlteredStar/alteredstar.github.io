@@ -37,12 +37,12 @@ function selectFake() {
   choose(Status.FAKE);
 }
 
-$("#reroll").on('click', function() {
+$("#reroll").on('click', () => {
   generateNovel();
   clearDisplay();
 });
 
-$("#toggleReroll").on('click', function() {
+$("#toggleReroll").on('click', () => {
   if (autoReroll.checked) {
     document.getElementById("reroll").style.visibility = 'hidden';
   }
@@ -55,31 +55,31 @@ $("#toggleReroll").on('click', function() {
 
 
 //button skin settings
-$("#defaultButtons").on('click', function() {
+$("#defaultButtons").on('click', () => {
   $('#buttonPicker').html("Default Buttons");
 
   hideButtonsExcept("default");
 });
 
-$("#amongUsButtons").on('click', function() {
+$("#amongUsButtons").on('click', () => {
   $('#buttonPicker').html("Among Us Buttons");
 
   hideButtonsExcept("among us");
 });
 
-$("#robinButtons").on('click', function() {
+$("#robinButtons").on('click', () => {
   $('#buttonPicker').html("Robin (HSR) Buttons");
 
   hideButtonsExcept("robin");
 });
 
-$("#mobaButtons").on('click', function() {
+$("#mobaButtons").on('click', () => {
   $('#buttonPicker').html("MOBA Buttons");
 
   hideButtonsExcept("moba");
 });
 
-$("#eldenRingButtons").on('click', function() {
+$("#eldenRingButtons").on('click', () => {
   $('#buttonPicker').html("Elden Ring Buttons");
 
   hideButtonsExcept("elden ring");
@@ -113,7 +113,7 @@ function hideButtonsExcept(buttonGroup) {
   }
 }
 
-$("#rerollSpeedSlider").on('input change', function() {
+$("#rerollSpeedSlider").on('input change', () => {
   if ($(this).val() == 1) {
     $("#rerollSpeedDisplay").html($(this).val() + " second");
   }

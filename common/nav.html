@@ -6,17 +6,25 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-      <ul class="navbar-nav navbar_links ml-auto">
+      <ul class="navbar-nav navbar_links ml-auto me-auto mb-lg-0">
         <li class="nav-item px-1">
           <a class="nav-link" href="/"><i class="fa-solid fa-star px-2"></i>Home <span class="visually-hidden">(current)</span></a>
         </li>
 
-        <li class="nav-item px-1">
+        <!-- <li class="nav-item px-1">
           <a class="nav-link" href="/games/guess_country_manhua.html"><i class="fa-solid fa-globe px-2"></i>Guess The Country (Manhua)</a>
         </li>
 
         <li class="nav-item px-1">
           <a class="nav-link" href="/games/guess_country_novel.html"><i class="fa-solid fa-globe px-2"></i>Guess The Country (Novel)</a>
+        </li> -->
+
+        <li class="nav-item dropdown px-1">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-globe px-2"></i>Guess The Country</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item my-1" href="/games/guess_country_manhua.html">Guess The Country (Manhua)</a></li>
+            <li><a class="dropdown-item my-1" href="/games/guess_country_novel.html">Guess The Country (Novel)</a></li>
+          </ul>
         </li>
 
         <li class="nav-item px-1">
@@ -29,14 +37,27 @@
 
         <li class="nav-item dropdown px-1">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-compass px-2"></i>Other</a>
-          <ul class="dropdown-menu dropdown-menu-dark">
-            <li><a class="dropdown-item" href="#"> N/A </a></li>
-            <li><a class="dropdown-item" href="#"> N/A </a></li>
-            <li><a class="dropdown-item" href="#"> N/A </a></li>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item my-1" href="#">N/A</a></li>
+            <li><a class="dropdown-item my-1" href="#">N/A</a></li>
+            <li><a class="dropdown-item my-1" href="#">N/A</a></li>
           </ul>
         </li>
         
       </ul>
+      
+      <ul class="navbar-nav navbar_links flex-row flex-wrap ms-md-auto">
+        <li class="nav-item dropdown px-1">
+          <a class="nav-link py-2 px-0 px-lg-2 mr-4 dropdown-toggle d-flex align-items-center show" id="modeDisplay" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-circle-half-stroke px-2" id="modeSymbol"></i>Auto</a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><button class="dropdown-item my-1" type="button" id="autoMode" data-bs-theme-value="auto"><i class="fa-solid fa-circle-half-stroke px-2"></i>Auto</button></li>
+            <li><button class="dropdown-item my-1" type="button" id="lightMode" data-bs-theme-value="light"><i class="fa-solid fa-sun px-2"></i>Light Mode</button></li>
+            <li><button class="dropdown-item my-1" type="button" id="darkMode" data-bs-theme-value="dark"><i class="fa-solid fa-moon px-2"></i>Dark Mode</button></li>
+          </ul>
+        </li>
+      </ul>
+      
+      
     </div>
   </div>
 </nav>
@@ -49,4 +70,22 @@
   if (page_location == "" || null) {
     $('.navbar_links a[href="/"]').addClass('active').siblings().removeClass('active');
   }
+
+  $("#autoMode").on('click', () => {
+    setStoredTheme("auto");
+    setTheme("auto");
+    showMode("auto");
+  });
+
+  $("#lightMode").on('click', () => {
+    setStoredTheme("light");
+    setTheme("light");
+    showMode("light");
+  });
+
+  $("#darkMode").on('click', () => {
+    setStoredTheme("dark");
+    setTheme("dark");
+    showMode("dark");
+  });
 </script>

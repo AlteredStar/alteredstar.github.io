@@ -12,7 +12,7 @@ window.onload = async function() {
   let csv = "";
 
   if ($("#titleDisplay").data("title-type") == "novel") {
-    await fetch('../js/novel_titles_test.csv')
+    await fetch('../js/novel_titles.csv')
       .then(res => res.text())
       .then(data => csv = data);
   }
@@ -95,17 +95,14 @@ function choose(country) {
     $('#answerDisplay').addClass("text-danger");
   }
 
-  if (autoReroll.checked && rerollSpeed != 0) {
+  if (autoReroll.checked) {
     setTimeout(() => {
       generateTitle();
-      clearDisplay();
     }, rerollSpeed);
-  }
-  else if (autoReroll.checked) {
-    generateTitle();
+
     setTimeout(() => {
       clearDisplay();
-    }, 500);
+    }, rerollSpeed != 0 ? rerollSpeed : 500);
   }
 }
 

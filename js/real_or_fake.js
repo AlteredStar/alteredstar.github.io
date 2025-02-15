@@ -80,17 +80,14 @@ function choose(status) {
     $('#answerDisplay').addClass("text-danger");
   }
 
-  if (autoReroll.checked && rerollSpeed != 0) {
+  if (autoReroll.checked) {
     setTimeout(() => {
-      generateNovel();
-      clearDisplay();
+      generateTitle();
     }, rerollSpeed);
-  }
-  else if (autoReroll.checked) {
-    generateNovel();
+
     setTimeout(() => {
       clearDisplay();
-    }, 500);
+    }, rerollSpeed != 0 ? rerollSpeed : 500);
   }
 }
 

@@ -61,25 +61,25 @@ $("#defaultButtons").on('click', function() {
   hideButtonsExcept("default");
 });
 
-$("#amongUsButtonGroup").on('click', function() {
+$("#amongUsButtons").on('click', function() {
   $('#buttonPicker').html("Among Us Buttons");
 
   hideButtonsExcept("among us");
 });
 
-$("#robinButtonGroup").on('click', function() {
+$("#robinButtons").on('click', function() {
   $('#buttonPicker').html("Robin (HSR) Buttons");
 
   hideButtonsExcept("robin");
 });
 
-$("#mobaButtonGroup").on('click', function() {
+$("#mobaButtons").on('click', function() {
   $('#buttonPicker').html("MOBA Buttons");
 
   hideButtonsExcept("moba");
 });
 
-$("#eldenRingButtonGroup").on('click', function() {
+$("#eldenRingButtons").on('click', function() {
   $('#buttonPicker').html("Elden Ring Buttons");
 
   hideButtonsExcept("elden ring");

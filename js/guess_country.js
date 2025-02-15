@@ -29,6 +29,7 @@ window.onload = async function() {
 }
 
 $("#JP").on('click', selectJP);
+$("#manhuaJP").on('click', selectJP);
 $("#aespaJP").on('click', selectJP);
 $("#flagJP").on('click', selectJP);
 $("#foodJP").on('click', selectJP);
@@ -39,6 +40,7 @@ function selectJP() {
 }
 
 $("#CN").on('click', selectCN);
+$("#manhuaCN").on('click', selectCN);
 $("#aespaCN").on('click', selectCN);
 $("#flagCN").on('click', selectCN);
 $("#foodCN").on('click', selectCN);
@@ -49,6 +51,7 @@ function selectCN() {
 }
 
 $("#KR").on('click', selectKR);
+$("#manhuaKR").on('click', selectKR);
 $("#aespaKR").on('click', selectKR);
 $("#flagKR").on('click', selectKR);
 $("#foodKR").on('click', selectKR);
@@ -80,6 +83,12 @@ $("#defaultButtons").on('click', function() {
   $('#buttonPicker').html("Default Buttons");
 
   hideButtonsExcept("default");
+});
+
+$("#manhuaButtons").on('click', function() {
+  $('#buttonPicker').html("Manhua Buttons");
+  
+  hideButtonsExcept("manhua");
 });
 
 $("#aespaButtons").on('click', function() {
@@ -114,6 +123,7 @@ $("#gachaButtons").on('click', function() {
 
 function hideButtonsExcept(buttonGroup) {
   $('#defaultButtonGroup').hide();
+  $('#manhuaButtonGroup').hide();
   $('#aespaButtonGroup').hide();
   $('#flagButtonGroup').hide();
   $('#foodButtonGroup').hide();
@@ -123,6 +133,9 @@ function hideButtonsExcept(buttonGroup) {
   switch (buttonGroup) {
     case "default":
       $('#defaultButtonGroup').show();
+      break;
+    case "manhua":
+      $('#manhuaButtonGroup').show();
       break;
     case "aespa":
       $('#aespaButtonGroup').show();

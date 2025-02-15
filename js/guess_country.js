@@ -92,7 +92,7 @@ $("#foodButtons").on('click', function() {
 $("#protagButtons").on('click', function() {
   $('#buttonPicker').html("Protagonist Buttons");
   
-  hideButtonsExcept("protagonist");
+  hideButtonsExcept("protag");
 });
 
 function hideButtonsExcept(buttonGroup) {

@@ -25,6 +25,7 @@ $("#aespaJP").on('click', selectJP);
 $("#flagJP").on('click', selectJP);
 $("#foodJP").on('click', selectJP);
 $("#protagJP").on('click', selectJP);
+$("#gachaJP").on('click', selectJP);
 function selectJP() {
   choose(Country.JP);
 }
@@ -34,6 +35,7 @@ $("#aespaCN").on('click', selectCN);
 $("#flagCN").on('click', selectCN);
 $("#foodCN").on('click', selectCN);
 $("#protagCN").on('click', selectCN);
+$("#gachaCN").on('click', selectCN);
 function selectCN() {
   choose(Country.CN);
 }
@@ -43,6 +45,7 @@ $("#aespaKR").on('click', selectKR);
 $("#flagKR").on('click', selectKR);
 $("#foodKR").on('click', selectKR);
 $("#protagKR").on('click', selectKR);
+$("#gachaKR").on('click', selectKR);
 function selectKR() {
   choose(Country.KR);
 }
@@ -95,12 +98,19 @@ $("#protagButtons").on('click', function() {
   hideButtonsExcept("protag");
 });
 
+$("#gachaButtons").on('click', function() {
+  $('#buttonPicker').html("Gacha Buttons");
+  
+  hideButtonsExcept("gacha");
+});
+
 function hideButtonsExcept(buttonGroup) {
   $('#defaultButtonGroup').hide();
   $('#aespaButtonGroup').hide();
   $('#flagButtonGroup').hide();
   $('#foodButtonGroup').hide();
   $('#protagButtonGroup').hide();
+  $('#gachaButtonGroup').hide();
 
   switch (buttonGroup) {
     case "default":
@@ -117,6 +127,9 @@ function hideButtonsExcept(buttonGroup) {
       break;
     case "protag":
       $('#protagButtonGroup').show();
+      break;
+    case "gacha":
+      $('#gachaButtonGroup').show();
       break;
     default:
       $('#defaultButtonGroup').show();

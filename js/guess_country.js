@@ -66,29 +66,65 @@ $("#toggleReroll").on('click', function() {
   clearDisplay();
 });
 
+
+//buttons skin settings
 $("#defaultButtons").on('click', function() {
   $('#buttonPicker').html("Default Buttons");
 
-  $('#defaultButtonGroup').show();
-  $('#aespaButtonGroup').hide();
-  $('#flagButtonGroup').hide();
+  hideButtonsExcept("default");
 });
 
 $("#aespaButtons").on('click', function() {
   $('#buttonPicker').html("Aespa Buttons");
   
-  $('#defaultButtonGroup').hide();
-  $('#aespaButtonGroup').show();
-  $('#flagButtonGroup').hide();
+  hideButtonsExcept("aespa");
 });
 
 $("#flagButtons").on('click', function() {
   $('#buttonPicker').html("Flag Buttons");
   
+  hideButtonsExcept("flag");
+});
+
+$("#foodButtons").on('click', function() {
+  $('#buttonPicker').html("Food Buttons");
+  
+  hideButtonsExcept("food");
+});
+
+$("#protagButtons").on('click', function() {
+  $('#buttonPicker').html("Protagonist Buttons");
+  
+  hideButtonsExcept("protagonist");
+});
+
+function hideButtonsExcept(buttonGroup) {
   $('#defaultButtonGroup').hide();
   $('#aespaButtonGroup').hide();
-  $('#flagButtonGroup').show();
-});
+  $('#flagButtonGroup').hide();
+  $('#foodButtonGroup').hide();
+  $('#protagButtonGroup').hide();
+
+  switch (buttonGroup) {
+    case "default":
+      $('#defaultButtonGroup').show();
+      break;
+    case "aespa":
+      $('#aespaButtonGroup').show();
+      break;
+    case "flag":
+      $('#flagButtonGroup').show();
+      break;
+    case "food":
+      $('#foodButtonGroup').show();
+      break;
+    case "protag":
+      $('#protagButtonGroup').show();
+      break;
+    default:
+      $('#defaultButtonGroup').show();
+  }
+}
 
 $("#rerollSpeedSlider").on('input change', function() {
   if ($(this).val() == 1) {

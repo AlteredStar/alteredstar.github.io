@@ -43,12 +43,65 @@ $("#toggleReroll").on('click', function() {
   clearDisplay();
 });
 
+
+//button skin settings
 $("#defaultButtons").on('click', function() {
   $('#buttonPicker').html("Default Buttons");
 
-  $('#defaultButtonGroup').show();
-  //$('#').hide();
+  hideButtonsExcept("default");
 });
+
+$("#amongUsButtonGroup").on('click', function() {
+  $('#buttonPicker').html("Among Us Buttons");
+
+  hideButtonsExcept("among us");
+});
+
+$("#robinButtonGroup").on('click', function() {
+  $('#buttonPicker').html("Robin (HSR) Buttons");
+
+  hideButtonsExcept("robin");
+});
+
+$("#mobaButtonGroup").on('click', function() {
+  $('#buttonPicker').html("MOBA Buttons");
+
+  hideButtonsExcept("moba");
+});
+
+$("#eldenRingButtonGroup").on('click', function() {
+  $('#buttonPicker').html("Elden Ring Buttons");
+
+  hideButtonsExcept("elden ring");
+});
+
+function hideButtonsExcept(buttonGroup) {
+  $('#defaultButtonGroup').hide();
+  $('#amongUsButtonGroup').hide();
+  $('#robinButtonGroup').hide();
+  $('#mobaButtonGroup').hide();
+  $('#eldenRingButtonGroup').hide();
+
+  switch (buttonGroup) {
+    case "default":
+      $('#defaultButtonGroup').show();
+      break;
+    case "among us":
+      $('#amongUsButtonGroup').show();
+      break;
+    case "robin":
+      $('#robinButtonGroup').show();
+      break;
+    case "moba":
+      $('#mobaButtonGroup').show();
+      break;
+    case "elden ring":
+      $('#eldenRingButtonGroup').show();
+      break;
+    default:
+      $('#defaultButtonGroup').show();
+  }
+}
 
 $("#rerollSpeedSlider").on('input change', function() {
   if ($(this).val() == 1) {

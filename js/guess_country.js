@@ -12,7 +12,7 @@ window.onload = async function() {
   let csv = "";
 
   if ($("#titleDisplay").data("title-type") == "novel") {
-    await fetch('../js/novel_titles.csv')
+    await fetch('../js/novel_titles_test.csv')
       .then(res => res.text())
       .then(data => csv = data);
   }
@@ -28,38 +28,21 @@ window.onload = async function() {
   clearDisplay();
 }
 
-$("#JP").on('click', selectJP);
-$("#manhuaJP").on('click', selectJP);
-$("#aespaJP").on('click', selectJP);
-$("#flagJP").on('click', selectJP);
-$("#foodJP").on('click', selectJP);
-$("#protagJP").on('click', selectJP);
-$("#gachaJP").on('click', selectJP);
-function selectJP() {
+const selectJP = () => {
   choose(Country.JP);
 }
 
-$("#CN").on('click', selectCN);
-$("#manhuaCN").on('click', selectCN);
-$("#aespaCN").on('click', selectCN);
-$("#flagCN").on('click', selectCN);
-$("#foodCN").on('click', selectCN);
-$("#protagCN").on('click', selectCN);
-$("#gachaCN").on('click', selectCN);
-function selectCN() {
+const selectCN = () => {
   choose(Country.CN);
 }
 
-$("#KR").on('click', selectKR);
-$("#manhuaKR").on('click', selectKR);
-$("#aespaKR").on('click', selectKR);
-$("#flagKR").on('click', selectKR);
-$("#foodKR").on('click', selectKR);
-$("#protagKR").on('click', selectKR);
-$("#gachaKR").on('click', selectKR);
-function selectKR() {
+const selectKR = () => {
   choose(Country.KR);
 }
+
+$('[data-button-type=JP]').on('click', selectJP);
+$('[data-button-type=CN]').on('click', selectCN);
+$('[data-button-type=KR]').on('click', selectKR);
 
 $("#reroll").on('click', () => {
   generateTitle();
@@ -78,83 +61,15 @@ $("#toggleReroll").on('click', () => {
 });
 
 
-//buttons skin settings
-$("#defaultButtons").on('click', () => {
-  $('#buttonPicker').html("Default Buttons");
-
-  hideButtonsExcept("default");
-});
-
-$("#manhuaButtons").on('click', () => {
-  $('#buttonPicker').html("Manhua Buttons");
-  
-  hideButtonsExcept("manhua");
-});
-
-$("#aespaButtons").on('click', () => {
-  $('#buttonPicker').html("Aespa Buttons");
-  
-  hideButtonsExcept("aespa");
-});
-
-$("#flagButtons").on('click', () => {
-  $('#buttonPicker').html("Flag Buttons");
-  
-  hideButtonsExcept("flag");
-});
-
-$("#foodButtons").on('click', () => {
-  $('#buttonPicker').html("Food Buttons");
-  
-  hideButtonsExcept("food");
-});
-
-$("#protagButtons").on('click', () => {
-  $('#buttonPicker').html("Protagonist Buttons");
-  
-  hideButtonsExcept("protag");
-});
-
-$("#gachaButtons").on('click', () => {
-  $('#buttonPicker').html("Gacha Buttons");
-  
-  hideButtonsExcept("gacha");
+//add click event listener to each dropdown button
+$('[data-button-type="setting"]').on('click', button => {
+  $('#buttonPicker').text($('#' + button.target.id).text());
+  hideButtonsExcept(button.target.id);
 });
 
 function hideButtonsExcept(buttonGroup) {
-  $('#defaultButtonGroup').hide();
-  $('#manhuaButtonGroup').hide();
-  $('#aespaButtonGroup').hide();
-  $('#flagButtonGroup').hide();
-  $('#foodButtonGroup').hide();
-  $('#protagButtonGroup').hide();
-  $('#gachaButtonGroup').hide();
-
-  switch (buttonGroup) {
-    case "default":
-      $('#defaultButtonGroup').show();
-      break;
-    case "manhua":
-      $('#manhuaButtonGroup').show();
-      break;
-    case "aespa":
-      $('#aespaButtonGroup').show();
-      break;
-    case "flag":
-      $('#flagButtonGroup').show();
-      break;
-    case "food":
-      $('#foodButtonGroup').show();
-      break;
-    case "protag":
-      $('#protagButtonGroup').show();
-      break;
-    case "gacha":
-      $('#gachaButtonGroup').show();
-      break;
-    default:
-      $('#defaultButtonGroup').show();
-  }
+  $('[data-button-type=group]').hide();
+  $('#' + buttonGroup + 'Group').show();
 }
 
 $("#rerollSpeedSlider").on('input change', () => {
@@ -168,26 +83,27 @@ $("#rerollSpeedSlider").on('input change', () => {
 });
 
 function choose(country) {
+  $('#answerDisplay').removeClass("text-success");
+  $('#answerDisplay').removeClass("text-danger");
+
   if (currentCountry == country) {
     $('#answerDisplay').html("CORRECT");
     $('#answerDisplay').addClass("text-success");
-    $('#answerDisplay').removeClass("text-danger");
   }
   else {
     $('#answerDisplay').html("WRONG");
     $('#answerDisplay').addClass("text-danger");
-    $('#answerDisplay').removeClass("text-success");
   }
 
   if (autoReroll.checked && rerollSpeed != 0) {
-    setTimeout(function (){
+    setTimeout(() => {
       generateTitle();
       clearDisplay();
     }, rerollSpeed);
   }
   else if (autoReroll.checked) {
     generateTitle();
-    setTimeout(function (){
+    setTimeout(() => {
       clearDisplay();
     }, 500);
   }

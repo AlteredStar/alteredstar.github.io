@@ -25,74 +25,74 @@
         <div id="answerDisplay" class="text-center display-6" style="height: 50px;">ANSWER</div>
       </div>
       
-      <div class="container justify-content-between" id="defaultButtonGroup">
-        <button type="button" class="btn btn-secondary btn-lg px-5 mx-4" id="JP">JP</button>
-        <button type="button" class="btn btn-secondary btn-lg px-5 mx-4" id="CN">CN</button>
-        <button type="button" class="btn btn-secondary btn-lg px-5 mx-4" id="KR">KR</button>
+      <div class="container justify-content-between" id="defaultButtonGroup" data-button-type="group">
+        <button type="button" class="btn btn-secondary btn-lg px-5 mx-4" id="JP" data-button-type="JP">JP</button>
+        <button type="button" class="btn btn-secondary btn-lg px-5 mx-4" id="CN" data-button-type="CN">CN</button>
+        <button type="button" class="btn btn-secondary btn-lg px-5 mx-4" id="KR" data-button-type="KR">KR</button>
       </div>
 
-      <div class="container justify-content-between" id="manhuaButtonGroup" style="display: none;">
-        <button type="button" class="btn btn-secondary btn-lg px-5 mx-4" id="manhuaJP">Manga</button>
-        <button type="button" class="btn btn-secondary btn-lg px-5 mx-4" id="manhuaCN">Manhua</button>
-        <button type="button" class="btn btn-secondary btn-lg px-5 mx-4" id="manhuaKR">Manhwa</button>
+      <div class="container justify-content-between" id="manhuaButtonGroup" data-button-type="group" style="display: none;">
+        <button type="button" class="btn btn-secondary btn-lg px-5 mx-4" id="manhuaJP" data-button-type="JP">Manga</button>
+        <button type="button" class="btn btn-secondary btn-lg px-5 mx-4" id="manhuaCN" data-button-type="CN">Manhua</button>
+        <button type="button" class="btn btn-secondary btn-lg px-5 mx-4" id="manhuaKR" data-button-type="KR">Manhwa</button>
       </div>
 
-      <div class="container justify-content-between" id="aespaButtonGroup" style="display: none;">
-        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="aespaJP" data-mdb-ripple-color="dark">
+      <div class="container justify-content-between" id="aespaButtonGroup" data-button-type="group" style="display: none;">
+        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="aespaJP" data-button-type="JP" data-mdb-ripple-color="dark">
           <img class="border" src="/images/guess_country/aespa_buttons/giselle_pink.png" data-holder-rendered="true" style="height: 150px; width: 100%; display: block;">
         </a>
-        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="aespaCN" data-mdb-ripple-color="dark">
+        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="aespaCN" data-button-type="CN" data-mdb-ripple-color="dark">
           <img class="border" src="/images/guess_country/aespa_buttons/ningning.png" data-holder-rendered="true" style="height: 150px; width: 100%; display: block;">
         </a>
-        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="aespaKR" data-mdb-ripple-color="dark">
+        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="aespaKR" data-button-type="KR" data-mdb-ripple-color="dark">
           <img class="border" src="/images/guess_country/aespa_buttons/karina_winter.png" data-holder-rendered="true" style="height: 150px; width: 100%; display: block;">
         </a>
       </div>
 
-      <div class="container justify-content-between" id="flagButtonGroup" style="display: none;">
-        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="flagJP" data-mdb-ripple-color="dark">
+      <div class="container justify-content-between" id="flagButtonGroup" data-button-type="group" style="display: none;">
+        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="flagJP" data-button-type="JP" data-mdb-ripple-color="dark">
           <img class="border" src="/images/guess_country/flag_buttons/japan_flag.png" data-holder-rendered="true" style="height: 150px; width: 100%; display: block;">
         </a>
-        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="flagCN" data-mdb-ripple-color="dark">
+        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="flagCN" data-button-type="CN" data-mdb-ripple-color="dark">
           <img class="border" src="/images/guess_country/flag_buttons/china_flag.png" data-holder-rendered="true" style="height: 150px; width: 100%; display: block;">
         </a>
-        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="flagKR" data-mdb-ripple-color="dark">
+        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="flagKR" data-button-type="KR" data-mdb-ripple-color="dark">
           <img class="border" src="/images/guess_country/flag_buttons/south_korea_flag.png" data-holder-rendered="true" style="height: 150px; width: 100%; display: block;">
         </a>
       </div>
 
-      <div class="container justify-content-between" id="foodButtonGroup" style="display: none;">
-        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="foodJP" data-mdb-ripple-color="dark">
+      <div class="container justify-content-between" id="foodButtonGroup" data-button-type="group" style="display: none;">
+        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="foodJP" data-button-type="JP" data-mdb-ripple-color="dark">
           <img class="border" src="/images/guess_country/food_buttons/ramen.png" data-holder-rendered="true" style="height: 150px; width: 100%; display: block;">
         </a>
-        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="foodCN" data-mdb-ripple-color="dark">
+        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="foodCN" data-button-type="CN" data-mdb-ripple-color="dark">
           <img class="border" src="/images/guess_country/food_buttons/peking_duck.png" data-holder-rendered="true" style="height: 150px; width: 100%; display: block;">
         </a>
-        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="foodKR" data-mdb-ripple-color="dark">
+        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="foodKR" data-button-type="KR" data-mdb-ripple-color="dark">
           <img class="border" src="/images/guess_country/food_buttons/kimchi.png" data-holder-rendered="true" style="height: 150px; width: 100%; display: block;">
         </a>
       </div>
 
-      <div class="container justify-content-between" id="protagButtonGroup" style="display: none;">
-        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="protagJP" data-mdb-ripple-color="dark">
+      <div class="container justify-content-between" id="protagButtonGroup" data-button-type="group" style="display: none;">
+        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="protagJP" data-button-type="JP" data-mdb-ripple-color="dark">
           <img class="border" src="/images/guess_country/protag_buttons/kirito.png" data-holder-rendered="true" style="height: 150px; width: 100%; display: block;">
         </a>
-        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="protagCN" data-mdb-ripple-color="dark">
+        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="protagCN" data-button-type="CN" data-mdb-ripple-color="dark">
           <img class="border" src="/images/guess_country/protag_buttons/yun_che.png" data-holder-rendered="true" style="height: 150px; width: 100%; display: block;">
         </a>
-        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="protagKR" data-mdb-ripple-color="dark">
+        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="protagKR" data-button-type="KR" data-mdb-ripple-color="dark">
           <img class="border" src="/images/guess_country/protag_buttons/sung_jin_woo.png" data-holder-rendered="true" style="height: 150px; width: 100%; display: block;">
         </a>
       </div>
 
-      <div class="container justify-content-between" id="gachaButtonGroup" style="display: none;">
-        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="gachaJP" data-mdb-ripple-color="dark">
+      <div class="container justify-content-between" id="gachaButtonGroup" data-button-type="group" style="display: none;">
+        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="gachaJP" data-button-type="JP" data-mdb-ripple-color="dark">
           <img class="border" src="/images/guess_country/gacha_buttons/gbf_icon.png" data-holder-rendered="true" style="height: 150px; width: 100%; display: block;">
         </a>
-        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="gachaCN" data-mdb-ripple-color="dark">
+        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="gachaCN" data-button-type="CN" data-mdb-ripple-color="dark">
           <img class="border" src="/images/guess_country/gacha_buttons/genshin_icon.png" data-holder-rendered="true" style="height: 150px; width: 100%; display: block;">
         </a>
-        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="gachaKR" data-mdb-ripple-color="dark">
+        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="gachaKR" data-button-type="KR" data-mdb-ripple-color="dark">
           <img class="border" src="/images/guess_country/gacha_buttons/nikke_icon.png" data-holder-rendered="true" style="height: 150px; width: 100%; display: block;">
         </a>
       </div>

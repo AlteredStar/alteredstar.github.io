@@ -25,17 +25,12 @@ const setTheme = theme => {
 
 setTheme(getPreferredTheme());
 
-function showMode(currentTheme) {
-  $('#modeSymbol').toggleClass("fa-sun");
-  $('#modeSymbol').toggleClass("fa-moon");
-
+const showMode = currentTheme => {
   if (currentTheme == "light") {
     $('#modeDisplay').html('<i class="fa-solid fa-sun px-2"></i>Light Mode');
-    $('#modeSymbol').toggleClass("fa-sun");
   }
   else if (currentTheme == "dark") {
     $('#modeDisplay').html('<i class="fa-solid fa-sun px-2"></i>Dark Mode');
-    $('#modeSymbol').toggleClass("fa-moon");
   }
 }
 

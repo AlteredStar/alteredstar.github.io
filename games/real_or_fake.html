@@ -25,43 +25,43 @@
         <div id="answerDisplay" class="text-center display-6" style="height: 50px;">ANSWER</div>
       </div>
       
-      <div class="container justify-content-between" id="defaultButtonGroup">
-        <button type="button" class="btn btn-secondary btn-lg px-5 mx-4" id="real">Real</button>
-        <button type="button" class="btn btn-secondary btn-lg px-5 mx-4" id="fake">Fake</button>
+      <div class="container justify-content-between" id="defaultButtonGroup" data-button-type="group">
+        <button type="button" class="btn btn-secondary btn-lg px-5 mx-4" id="real" data-button-type="real">Real</button>
+        <button type="button" class="btn btn-secondary btn-lg px-5 mx-4" id="fake" data-button-type="fake">Fake</button>
       </div>
 
-      <div class="container justify-content-between" id="amongUsButtonGroup" style="display: none;">
-        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="amongUsReal" data-mdb-ripple-color="dark">
+      <div class="container justify-content-between" id="amongUsButtonGroup" data-button-type="group" style="display: none;">
+        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="amongUsReal" data-button-type="real" data-mdb-ripple-color="dark">
           <img class="border" src="/images/real_or_fake/among_us_buttons/cyan_crewmate.png" data-holder-rendered="true" style="height: 150px; width: 150px; display: block;">
         </a>
-        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="amongUsFake" data-mdb-ripple-color="dark">
+        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="amongUsFake" data-button-type="fake" data-mdb-ripple-color="dark">
           <img class="border" src="/images/real_or_fake/among_us_buttons/red_imposter.png" data-holder-rendered="true" style="height: 150px; width: 100%; display: block;">
         </a>
       </div>
 
-      <div class="container justify-content-between" id="robinButtonGroup" style="display: none;">
-        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="robinReal" data-mdb-ripple-color="dark">
+      <div class="container justify-content-between" id="robinButtonGroup" data-button-type="group" style="display: none;">
+        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="robinReal" data-button-type="real" data-mdb-ripple-color="dark">
           <img class="border" src="/images/real_or_fake/robin_buttons/robin_hsr.png" data-holder-rendered="true" style="height: 150px; width: 100%; display: block;">
         </a>
-        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="robinFake" data-mdb-ripple-color="dark">
+        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="robinFake" data-button-type="fake" data-mdb-ripple-color="dark">
           <img class="border" src="/images/real_or_fake/robin_buttons/robin_hsr.png" data-holder-rendered="true" style="height: 150px; width: 100%; display: block;">
         </a>
       </div>
 
-      <div class="container justify-content-between" id="mobaButtonGroup" style="display: none;">
-        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="mobaReal" data-mdb-ripple-color="dark">
+      <div class="container justify-content-between" id="mobaButtonGroup" data-button-type="group" style="display: none;">
+        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="mobaReal" data-button-type="real" data-mdb-ripple-color="dark">
           <img class="border" src="/images/real_or_fake/moba_buttons/lol_logo.png" data-holder-rendered="true" style="height: 150px; width: 100%; display: block;">
         </a>
-        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="mobaFake" data-mdb-ripple-color="dark">
+        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="mobaFake" data-button-type="fake" data-mdb-ripple-color="dark">
           <img class="border" src="/images/real_or_fake/moba_buttons/dota2_logo.png" data-holder-rendered="true" style="height: 150px; width: 100%; display: block;">
         </a>
       </div>
 
-      <div class="container justify-content-between" id="eldenRingButtonGroup" style="display: none;">
-        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="eldenRingReal" data-mdb-ripple-color="dark">
+      <div class="container justify-content-between" id="eldenRingButtonGroup" data-button-type="group" style="display: none;">
+        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="eldenRingReal" data-button-type="real" data-mdb-ripple-color="dark">
           <img class="border" src="/images/real_or_fake/elden_ring_buttons/elden_ring_cover.png" data-holder-rendered="true" style="height: 200px; width: 150px; display: block;">
         </a>
-        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="eldenRingFake" data-mdb-ripple-color="dark">
+        <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1" role="button" id="eldenRingFake" data-button-type="fake" data-mdb-ripple-color="dark">
           <img class="border" src="/images/real_or_fake/elden_ring_buttons/nightreign_cover.png" data-holder-rendered="true" style="height: 200px; width: 150px; display: block;">
         </a>
       </div>
@@ -89,11 +89,11 @@
                         Default Buttons
                       </button>
                       <ul class="dropdown-menu">
-                        <li><button class="dropdown-item" type="button" id="defaultButtons">Default Buttons</button></li>
-                        <li><button class="dropdown-item" type="button" id="amongUsButtons">Among Us Buttons</button></li>
-                        <li><button class="dropdown-item" type="button" id="robinButtons">Robin (HSR) Buttons</button></li>
-                        <li><button class="dropdown-item" type="button" id="mobaButtons">MOBA Buttons</button></li>
-                        <li><button class="dropdown-item" type="button" id="eldenRingButtons">Elden Ring Buttons</button></li>
+                        <li><button class="dropdown-item" type="button" id="defaultButton" data-button-type="setting">Default Buttons</button></li>
+                        <li><button class="dropdown-item" type="button" id="amongUsButton" data-button-type="setting">Among Us Buttons</button></li>
+                        <li><button class="dropdown-item" type="button" id="robinButton" data-button-type="setting">Robin (HSR) Buttons</button></li>
+                        <li><button class="dropdown-item" type="button" id="mobaButton" data-button-type="setting">MOBA Buttons</button></li>
+                        <li><button class="dropdown-item" type="button" id="eldenRingButton" data-button-type="setting">Elden Ring Buttons</button></li>
                       </ul>
                     </div>
                   </div>

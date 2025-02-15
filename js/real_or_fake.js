@@ -19,23 +19,16 @@ window.onload = async function() {
   clearDisplay();
 }
 
-$("#real").on('click', selectReal);
-$("#amongUsReal").on('click', selectReal);
-$("#robinReal").on('click', selectReal);
-$("#mobaReal").on('click', selectReal);
-$("#eldenRingReal").on('click', selectReal);
 function selectReal() {
   choose(Status.REAL);
 }
 
-$("#fake").on('click', selectFake);
-$("#amongUsFake").on('click', selectFake);
-$("#robinFake").on('click', selectFake);
-$("#mobaFake").on('click', selectFake);
-$("#eldenRingFake").on('click', selectFake);
 function selectFake() {
   choose(Status.FAKE);
 }
+
+$('[data-button-type=real]').on('click', selectReal);
+$('[data-button-type=fake]').on('click', selectFake);
 
 $("#reroll").on('click', () => {
   generateNovel();
@@ -53,64 +46,15 @@ $("#toggleReroll").on('click', () => {
   clearDisplay();
 });
 
-
-//button skin settings
-$("#defaultButtons").on('click', () => {
-  $('#buttonPicker').html("Default Buttons");
-
-  hideButtonsExcept("default");
-});
-
-$("#amongUsButtons").on('click', () => {
-  $('#buttonPicker').html("Among Us Buttons");
-
-  hideButtonsExcept("among us");
-});
-
-$("#robinButtons").on('click', () => {
-  $('#buttonPicker').html("Robin (HSR) Buttons");
-
-  hideButtonsExcept("robin");
-});
-
-$("#mobaButtons").on('click', () => {
-  $('#buttonPicker').html("MOBA Buttons");
-
-  hideButtonsExcept("moba");
-});
-
-$("#eldenRingButtons").on('click', () => {
-  $('#buttonPicker').html("Elden Ring Buttons");
-
-  hideButtonsExcept("elden ring");
+//add click event listener to each dropdown button
+$('[data-button-type="setting"]').on('click', button => {
+  $('#buttonPicker').text($('#' + button.target.id).text());
+  hideButtonsExcept(button.target.id);
 });
 
 function hideButtonsExcept(buttonGroup) {
-  $('#defaultButtonGroup').hide();
-  $('#amongUsButtonGroup').hide();
-  $('#robinButtonGroup').hide();
-  $('#mobaButtonGroup').hide();
-  $('#eldenRingButtonGroup').hide();
-
-  switch (buttonGroup) {
-    case "default":
-      $('#defaultButtonGroup').show();
-      break;
-    case "among us":
-      $('#amongUsButtonGroup').show();
-      break;
-    case "robin":
-      $('#robinButtonGroup').show();
-      break;
-    case "moba":
-      $('#mobaButtonGroup').show();
-      break;
-    case "elden ring":
-      $('#eldenRingButtonGroup').show();
-      break;
-    default:
-      $('#defaultButtonGroup').show();
-  }
+  $('[data-button-type=group]').hide();
+  $('#' + buttonGroup + 'Group').show();
 }
 
 $("#rerollSpeedSlider").on('input change', () => {
@@ -124,26 +68,27 @@ $("#rerollSpeedSlider").on('input change', () => {
 });
 
 function choose(status) {
+  $('#answerDisplay').removeClass("text-success");
+  $('#answerDisplay').removeClass("text-danger");
+
   if (currentStatus == status) {
     $('#answerDisplay').html("CORRECT");
     $('#answerDisplay').addClass("text-success");
-    $('#answerDisplay').removeClass("text-danger");
   }
   else {
     $('#answerDisplay').html("WRONG");
     $('#answerDisplay').addClass("text-danger");
-    $('#answerDisplay').removeClass("text-success");
   }
 
   if (autoReroll.checked && rerollSpeed != 0) {
-    setTimeout(function (){
+    setTimeout(() => {
       generateNovel();
       clearDisplay();
     }, rerollSpeed);
   }
   else if (autoReroll.checked) {
     generateNovel();
-    setTimeout(function (){
+    setTimeout(() => {
       clearDisplay();
     }, 500);
   }

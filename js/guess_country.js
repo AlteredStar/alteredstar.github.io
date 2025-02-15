@@ -4,19 +4,27 @@ const Country = Object.freeze({
   KR: 2
 });
 
-var novelTitles, currentCountry = -1, currentNovel = -1;
+var titles, currentCountry = -1, currentTitle = -1;
 var autoReroll = document.getElementById("toggleReroll");
 var rerollSpeed = 2000;
 
 window.onload = async function() {
   let csv = "";
-  await fetch('../js/novel_titles.csv')
-    .then(res => res.text())
-    .then(data => csv = data);
-  
-  novelTitles = parse(csv);
 
-  generateNovel();
+  if ($("#titleDisplay").data("title-type") == "novel") {
+    await fetch('../js/novel_titles.csv')
+      .then(res => res.text())
+      .then(data => csv = data);
+  }
+  else if ($("#titleDisplay").data("title-type") == "manhua") {
+    await fetch('../js/manhua_titles.csv')
+      .then(res => res.text())
+      .then(data => csv = data);
+  }
+  
+  titles = parse(csv);
+
+  generateTitle();
   clearDisplay();
 }
 
@@ -51,7 +59,7 @@ function selectKR() {
 }
 
 $("#reroll").on('click', function() {
-  generateNovel();
+  generateTitle();
   clearDisplay();
 });
 
@@ -160,12 +168,12 @@ function choose(country) {
 
   if (autoReroll.checked && rerollSpeed != 0) {
     setTimeout(function (){
-      generateNovel();
+      generateTitle();
       clearDisplay();
     }, rerollSpeed);
   }
   else if (autoReroll.checked) {
-    generateNovel();
+    generateTitle();
     setTimeout(function (){
       clearDisplay();
     }, 500);
@@ -176,13 +184,13 @@ function randomCountry() {
   return Math.floor(Math.random() * 3);
 }
 
-function randomNovel() {
-  return Math.floor(Math.random() * (novelTitles.length - 1)) + 1;
+function randomTitle() {
+  return Math.floor(Math.random() * (titles.length - 1)) + 1;
 }
 
-function generateNovel() {
-  [currentCountry, currentNovel] = [randomCountry(), randomNovel()];
-  $('#novelTitleDisplay').html(novelTitles[currentNovel][currentCountry]);
+function generateTitle() {
+  [currentCountry, currentTitle] = [randomCountry(), randomTitle()];
+  $('#titleDisplay').html(titles[currentTitle][currentCountry]);
 }
 
 function clearDisplay() {

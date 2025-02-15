@@ -1,7 +1,6 @@
 $(document).ready(() => {
   $('.nav-wraper').load('/common/nav.html');    
   $('.footer-wraper').load('/common/footer.html');
-  showMode(getPreferredTheme());
 });
 
 const getStoredTheme = () => localStorage.getItem('theme');
@@ -26,49 +25,17 @@ const setTheme = theme => {
 
 setTheme(getPreferredTheme());
 
-/* $("#autoMode").on('click', () => {
-  console.log("HELLLOOOOO");
-  setStoredTheme("auto");
-  setTheme("auto");
-  showMode("auto");
-});
-
-$("#lightMode").on('click', () => {
-  console.log("HELLLOOOOO");
-  setStoredTheme("light");
-  setTheme("light");
-  showMode("light");
-});
-
-$("#darkMode").on('click', () => {
-  console.log("HELLLOOOOO");
-  setStoredTheme("dark");
-  setTheme("dark");
-  showMode("dark");
-}); */
-
 function showMode(currentTheme) {
-  console.log("here in show");
-  $("#modeSymbol").removeClass("fa-solid fa-circle-half-stroke");
-  $("#modeSymbol").removeClass("fa-solid fa-sun");
-  $("#modeSymbol").removeClass("fa-solid fa-moon");
+  $('#modeSymbol').toggleClass("fa-sun");
+  $('#modeSymbol').toggleClass("fa-moon");
 
-  switch (currentTheme) {
-    case "auto":
-      $("#modeSymbol").addClass("fa-solid fa-circle-half-stroke");
-      $("#modeDisplay").html("Auto");
-      break;
-    case "light":
-      $("#modeSymbol").addClass("fa-solid fa-sun");
-      $("#modeDisplay").html("Light Mode");
-      break;
-    case "dark":
-      $("#modeSymbol").addClass("fa-solid fa-moon");
-      $("#modeDisplay").html("Dark Mode");
-      break;
-    default:
-      $("#modeSymbol").addClass("fa-solid fa-circle-half-stroke");
-      $("#modeDisplay").html("Auto");
+  if (currentTheme == "light") {
+    $('#modeDisplay').html('<i class="fa-solid fa-sun px-2"></i>Light Mode');
+    $('#modeSymbol').toggleClass("fa-sun");
+  }
+  else if (currentTheme == "dark") {
+    $('#modeDisplay').html('<i class="fa-solid fa-sun px-2"></i>Dark Mode');
+    $('#modeSymbol').toggleClass("fa-moon");
   }
 }
 
@@ -76,5 +43,6 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () 
   const storedTheme = getStoredTheme();
   if (storedTheme !== 'light' && storedTheme !== 'dark') {
     setTheme(getPreferredTheme());
+    showMode(getPreferredTheme());
   }
 })

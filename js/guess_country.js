@@ -11,16 +11,9 @@ var rerollSpeed = 2000;
 window.onload = async function() {
   let csv = "";
 
-  if ($("#titleDisplay").data("title-type") == "novel") {
-    await fetch('../js/novel_titles.csv')
-      .then(res => res.text())
-      .then(data => csv = data);
-  }
-  else if ($("#titleDisplay").data("title-type") == "manhua") {
-    await fetch('../js/manhua_titles.csv')
-      .then(res => res.text())
-      .then(data => csv = data);
-  }
+  await fetch('../js/' + $("#titleDisplay").data("title-type") + '_titles.csv')
+    .then(res => res.text())
+    .then(data => csv = data);
   
   titles = parse(csv);
 

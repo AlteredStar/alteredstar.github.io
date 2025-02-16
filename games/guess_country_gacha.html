@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Guess The Country (Manhua)</title>
+  <title>Guess The Country (Gacha)</title>
   <link rel="icon" href="/images/icons/silverwolf_carrot_eyes.png" type="image/x-icon">
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
@@ -18,7 +18,7 @@
 
     <div class="container-lg text-center px-5">
       <div class="container-lg text-center px-5 mt-5 py-5">
-        <div id="titleDisplay" data-title-type="manhua" class="text-center display-6 row align-items-center justify-content-center" style="height: 250px;">MANHUA</div>
+        <div id="titleDisplay" data-title-type="gacha" class="text-center display-6 row align-items-center justify-content-center" style="height: 250px;">GAME</div>
       </div>
 
       <div class="container-lg text-center px-5 mb-5 py-5">
@@ -29,12 +29,6 @@
         <button type="button" class="btn btn-secondary btn-lg px-5 mx-4" id="JP" data-button-type="JP">JP</button>
         <button type="button" class="btn btn-secondary btn-lg px-5 mx-4" id="CN" data-button-type="CN">CN</button>
         <button type="button" class="btn btn-secondary btn-lg px-5 mx-4" id="KR" data-button-type="KR">KR</button>
-      </div>
-
-      <div class="container justify-content-between" id="manhuaButtonGroup" data-button-type="group" style="display: none;">
-        <button type="button" class="btn btn-secondary btn-lg px-5 mx-4" id="manhuaJP" data-button-type="JP">Manga</button>
-        <button type="button" class="btn btn-secondary btn-lg px-5 mx-4" id="manhuaCN" data-button-type="CN">Manhua</button>
-        <button type="button" class="btn btn-secondary btn-lg px-5 mx-4" id="manhuaKR" data-button-type="KR">Manhwa</button>
       </div>
 
       <div class="container justify-content-between" id="aespaButtonGroup" data-button-type="group" style="display: none;">
@@ -120,13 +114,12 @@
                         Default Buttons
                       </button>
                       <ul class="dropdown-menu">
-                        <li><button class="dropdown-item" type="button" id="defaultButtons">Default Buttons</button></li>
-                        <li><button class="dropdown-item" type="button" id="manhuaButtons">Manhua Buttons</button></li>
-                        <li><button class="dropdown-item" type="button" id="aespaButtons">Aespa Buttons</button></li>
-                        <li><button class="dropdown-item" type="button" id="flagButtons">Flag Buttons</button></li>
-                        <li><button class="dropdown-item" type="button" id="foodButtons">Food Buttons</button></li>
-                        <li><button class="dropdown-item" type="button" id="protagButtons">Protagonist Buttons</button></li>
-                        <li><button class="dropdown-item" type="button" id="gachaButtons">Gacha Buttons</button></li>
+                        <li><button class="dropdown-item" type="button" id="defaultButton" data-button-type="setting">Default Buttons</button></li>
+                        <li><button class="dropdown-item" type="button" id="aespaButton" data-button-type="setting">Aespa Buttons</button></li>
+                        <li><button class="dropdown-item" type="button" id="flagButton" data-button-type="setting">Flag Buttons</button></li>
+                        <li><button class="dropdown-item" type="button" id="foodButton" data-button-type="setting">Food Buttons</button></li>
+                        <li><button class="dropdown-item" type="button" id="protagButton" data-button-type="setting">Protagonist Buttons</button></li>
+                        <li><button class="dropdown-item" type="button" id="gachaButton" data-button-type="setting">Gacha Buttons</button></li>
                       </ul>
                     </div>
                   </div>

@@ -6,7 +6,7 @@ const Country = Object.freeze({
 
 var titles;
 var [currentCountry, currentTitle] = [-1, -1];
-const [rerollIsAuto, rerollOnWrong] = [document.getElementById("toggleReroll"), document.getElementById("rerollOnWrong")];
+const rerollIsAuto = document.getElementById("toggleReroll");
 var rerollSpeed = 2000;
 var [amountCorrect, currentlyAnswered] = [0, false];
 const history = [[], [], []];
@@ -14,7 +14,7 @@ const history = [[], [], []];
 window.onload = async function() {
   let csv = "";
 
-  await fetch('../js/' + $("#titleDisplay").data("title-type") + '_titles_test.csv')
+  await fetch('../js/' + $("#titleDisplay").data("title-type") + '_titles.csv')
     .then(res => res.text())
     .then(data => csv = data);
   
@@ -59,7 +59,7 @@ $("#toggleReroll").on('click', () => {
 });
 
 //adds a click event listener to each dropdown button
-$('[data-button-type="setting"]').on('click', button => {
+$('[data-button-type=setting]').on('click', button => {
   $('#buttonPicker').text($('#' + button.target.id).text());
   hideButtonsExcept(button.target.id);
 });
@@ -158,11 +158,6 @@ function choose(country) {
   if (currentCountry == country) {
     $('#answerDisplay').html("CORRECT");
     $('#answerDisplay').addClass("text-success");
-
-    if (rerollIsAuto.checked) {
-      autoReroll();
-      return;
-    }
   }
   else {
     $('#answerDisplay').html("WRONG");
@@ -171,7 +166,7 @@ function choose(country) {
     $('#correctAnswerDisplay').html("Correct: " + titles[0][currentCountry]);
   }
 
-  if (rerollIsAuto.checked && rerollOnWrong.checked) {
+  if (rerollIsAuto.checked) {
     autoReroll();
   }
 }

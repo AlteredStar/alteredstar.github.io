@@ -4,14 +4,17 @@ const Country = Object.freeze({
   KR: 2
 });
 
-var titles, currentCountry = -1, currentTitle = -1;
-var autoReroll = document.getElementById("toggleReroll");
+var titles, currentCountry = -1, currentTitle = -1, amountCorrect = 0;
+var rerollIsAuto = document.getElementById("toggleReroll");
 var rerollSpeed = 2000;
+var rerollOnWrong = document.getElementById("rerollOnWrong");
+var currentlyAnswered = false;
+const history = [];
 
 window.onload = async function() {
   let csv = "";
 
-  await fetch('../js/' + $("#titleDisplay").data("title-type") + '_titles.csv')
+  await fetch('../js/' + $("#titleDisplay").data("title-type") + '_titles_test.csv')
     .then(res => res.text())
     .then(data => csv = data);
   
@@ -33,28 +36,29 @@ const selectKR = () => {
   choose(Country.KR);
 }
 
+//checks click for all button skins
 $('[data-button-type=JP]').on('click', selectJP);
 $('[data-button-type=CN]').on('click', selectCN);
 $('[data-button-type=KR]').on('click', selectKR);
 
-$("#reroll").on('click', () => {
-  generateTitle();
-  clearDisplay();
-});
-
+//checks if user toggles auto reroll and conditionally hides the reroll button
 $("#toggleReroll").on('click', () => {
-  if (autoReroll.checked) {
+  if (rerollIsAuto.checked) {
     document.getElementById("reroll").style.visibility = 'hidden';
+    if (currentlyAnswered) {
+      reroll();
+    }
   }
   else {
     document.getElementById("reroll").style.visibility = 'visible';
+    $('#reroll').prop("disabled", true);
+    setTimeout(() => {
+      $('#reroll').prop("disabled", false);
+    }, rerollSpeed != 0 ? rerollSpeed : 500);
   }
-
-  clearDisplay();
 });
 
-
-//add click event listener to each dropdown button
+//adds a click event listener to each dropdown button
 $('[data-button-type="setting"]').on('click', button => {
   $('#buttonPicker').text($('#' + button.target.id).text());
   hideButtonsExcept(button.target.id);
@@ -65,6 +69,7 @@ function hideButtonsExcept(buttonGroup) {
   $('#' + buttonGroup + 'Group').show();
 }
 
+//adjusts reroll speed from 0 to 3 seconds
 $("#rerollSpeedSlider").on('input change', () => {
   if ($(this).val() == 1) {
     $("#rerollSpeedDisplay").html($(this).val() + " second");
@@ -75,27 +80,95 @@ $("#rerollSpeedSlider").on('input change', () => {
   rerollSpeed = $(this).val() * 1000;
 });
 
+function disableButtons() {
+  currentlyAnswered = true;
+  $('[data-button-type=JP]').prop("disabled", true);
+  $('[data-button-type=CN]').prop("disabled", true);
+  $('[data-button-type=KR]').prop("disabled", true);
+}
+
+function enableButtons() {
+  currentlyAnswered = false;
+  $('[data-button-type=JP]').prop("disabled", false);
+  $('[data-button-type=CN]').prop("disabled", false);
+  $('[data-button-type=KR]').prop("disabled", false);
+}
+
+//history
+function addToHistory(country) {
+  history.push(currentTitle);
+
+  const answerCountryCode = titles[0][country];
+  const currentCountryCode = titles[0][currentCountry];
+
+  let answerStatus = "danger";
+
+  if (answerCountryCode == currentCountryCode) {
+    answerStatus = "success"
+    amountCorrect++;
+  }
+
+  $("#historyTable").append(`\
+    <tbody>
+      <tr>
+        <th scope="row">${history.length}</th>
+        <td>${titles[currentTitle][currentCountry]}</td>
+        <td class="text-${answerStatus}">${answerCountryCode}</td>
+        <td class="text-success">${currentCountryCode}</td>
+      </tr>
+    </tbody>\
+  `);
+
+  $('#accuracyDisplay').html("Accuracy: " + (amountCorrect * 1.0 / history.length).toFixed(2) * 100 + "%")
+}
+
+//manual reroll
+function reroll() {
+  generateTitle();
+  clearDisplay();
+  enableButtons();
+}
+
+$("#reroll").on('click', () => {
+  reroll();
+});
+
+//auto reroll
+function autoReroll() {
+  setTimeout(() => {
+    generateTitle();
+  }, rerollSpeed);
+
+  setTimeout(() => {
+    clearDisplay();
+  }, rerollSpeed != 0 ? rerollSpeed : 500);
+
+  enableButtons();
+}
+
 function choose(country) {
-  $('#answerDisplay').removeClass("text-success");
-  $('#answerDisplay').removeClass("text-danger");
+  disableButtons();
+
+  addToHistory(country);
 
   if (currentCountry == country) {
     $('#answerDisplay').html("CORRECT");
     $('#answerDisplay').addClass("text-success");
+
+    if (rerollIsAuto.checked) {
+      autoReroll();
+      return;
+    }
   }
   else {
     $('#answerDisplay').html("WRONG");
     $('#answerDisplay').addClass("text-danger");
+    
+    $('#correctAnswerDisplay').html("Correct: " + titles[0][currentCountry]);
   }
 
-  if (autoReroll.checked) {
-    setTimeout(() => {
-      generateTitle();
-    }, rerollSpeed);
-
-    setTimeout(() => {
-      clearDisplay();
-    }, rerollSpeed != 0 ? rerollSpeed : 500);
+  if (rerollIsAuto.checked && rerollOnWrong.checked) {
+    autoReroll();
   }
 }
 
@@ -116,4 +189,6 @@ function clearDisplay() {
   $('#answerDisplay').html("");
   $('#answerDisplay').removeClass("text-success");
   $('#answerDisplay').removeClass("text-danger");
+
+  $('#correctAnswerDisplay').html("");
 }

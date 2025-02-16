@@ -37,7 +37,7 @@ $('[data-button-type=fake]').on('click', selectFake);
 
 //checks if user toggles auto reroll and conditionally hides the reroll button
 $("#toggleReroll").on('click', () => {
-  if (autoReroll.checked) {
+  if (rerollIsAuto.checked) {
     document.getElementById("reroll").style.visibility = 'hidden';
     if (currentlyAnswered) {
       reroll();

@@ -139,9 +139,45 @@
                     </div>
                   </div>
 
+                  <div class="container py-3">
+                    <div class="form-check form-switch">
+                      <label class="form-check-label" for="rerollOnWrong" style="float: left;">Disable Auto Reroll On Wrong Answers:</label>
+                      <input class="form-check-input" type="checkbox" id="rerollOnWrong" style="float: none; transform: scale(1.5);" checked>
+                    </div>
+                  </div>
+
                   <br><br><br><br><br><br><br><br><br><br>
                 </div>
                 <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="history" tabindex="-1" aria-labelledby="historyMenuTitle" style="display: none;">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="historyMenuTitle">History</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <table class="table" id="historyTable">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Your Answer</th>
+                        <th scope="col">Correct Answer</th>
+                      </tr>
+                    </thead>
+
+                  </table>
+                  <br><br><br><br><br><br><br><br><br><br>
+                </div>
+                <div class="modal-footer">
+                  <div class="me-auto" id="accuracyDisplay">Accuracy: N/A</div>
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
               </div>

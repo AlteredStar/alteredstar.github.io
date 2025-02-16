@@ -4,12 +4,12 @@ const Country = Object.freeze({
   KR: 2
 });
 
-var titles, currentCountry = -1, currentTitle = -1, amountCorrect = 0;
-var rerollIsAuto = document.getElementById("toggleReroll");
+var titles;
+var [currentCountry, currentTitle] = [-1, -1];
+const [rerollIsAuto, rerollOnWrong] = [document.getElementById("toggleReroll"), document.getElementById("rerollOnWrong")];
 var rerollSpeed = 2000;
-var rerollOnWrong = document.getElementById("rerollOnWrong");
-var currentlyAnswered = false;
-const history = [];
+var [amountCorrect, currentlyAnswered] = [0, false];
+const history = [[], [], []];
 
 window.onload = async function() {
   let csv = "";
@@ -70,14 +70,16 @@ function hideButtonsExcept(buttonGroup) {
 }
 
 //adjusts reroll speed from 0 to 3 seconds
-$("#rerollSpeedSlider").on('input change', () => {
-  if ($(this).val() == 1) {
-    $("#rerollSpeedDisplay").html($(this).val() + " second");
+$("#rerollSpeedSlider").on('input change', button => {
+  let rerollSpeedValue = $('#' + button.target.id).val();
+
+  if (rerollSpeedValue == 1) {
+    $("#rerollSpeedDisplay").html(rerollSpeedValue + " Second");
   }
   else {
-    $("#rerollSpeedDisplay").html($(this).val() + " seconds");
+    $("#rerollSpeedDisplay").html(rerollSpeedValue + " Seconds");
   }
-  rerollSpeed = $(this).val() * 1000;
+  rerollSpeed = rerollSpeedValue * 1000;
 });
 
 function disableButtons() {
@@ -96,7 +98,7 @@ function enableButtons() {
 
 //history
 function addToHistory(country) {
-  history.push(currentTitle);
+  history[currentCountry].push(currentTitle);
 
   const answerCountryCode = titles[0][country];
   const currentCountryCode = titles[0][currentCountry];
@@ -108,10 +110,12 @@ function addToHistory(country) {
     amountCorrect++;
   }
 
+  let attemptCount = history[0].length + history[1].length + history[2].length;
+
   $("#historyTable").append(`\
     <tbody>
       <tr>
-        <th scope="row">${history.length}</th>
+        <th scope="row">${attemptCount}</th>
         <td>${titles[currentTitle][currentCountry]}</td>
         <td class="text-${answerStatus}">${answerCountryCode}</td>
         <td class="text-success">${currentCountryCode}</td>
@@ -119,7 +123,7 @@ function addToHistory(country) {
     </tbody>\
   `);
 
-  $('#accuracyDisplay').html("Accuracy: " + (amountCorrect * 1.0 / history.length).toFixed(2) * 100 + "%")
+  $('#accuracyDisplay').html("Accuracy: " + (amountCorrect * 1.0 / attemptCount).toFixed(2) * 100 + "%")
 }
 
 //manual reroll
@@ -173,15 +177,21 @@ function choose(country) {
 }
 
 function randomCountry() {
-  return Math.floor(Math.random() * 3);
+  currentCountry = Math.floor(Math.random() * 3);
 }
 
-function randomTitle() {
-  return Math.floor(Math.random() * (titles.length - 1)) + 1;
+function randomTitle() {  
+  while (true) {
+    currentTitle = Math.floor(Math.random() * (titles.length - 1)) + 1;
+    if (history[currentCountry] === undefined || !history[currentCountry].includes(currentTitle) || history[currentCountry].length > titles.length - 2) {
+      break;
+    }
+  }
 }
 
 function generateTitle() {
-  [currentCountry, currentTitle] = [randomCountry(), randomTitle()];
+  randomCountry();
+  randomTitle();
   $('#titleDisplay').html(titles[currentTitle][currentCountry]);
 }
 

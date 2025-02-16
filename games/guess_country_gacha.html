@@ -21,8 +21,9 @@
         <div id="titleDisplay" data-title-type="gacha" class="text-center display-6 row align-items-center justify-content-center" style="height: 250px;">GAME</div>
       </div>
 
-      <div class="container-lg text-center px-5 mb-5 py-5">
+      <div class="container-lg text-center px-5 mb-5 pb-5">
         <div id="answerDisplay" class="text-center display-6" style="height: 50px;">ANSWER</div>
+        <div id="correctAnswerDisplay" class="text-center display-12 text-success" style="height: 25px;"></div>
       </div>
       
       <div class="container justify-content-between" id="defaultButtonGroup" data-button-type="group">
@@ -97,7 +98,8 @@
           <input type="checkbox" class="btn-check" id="toggleReroll" autocomplete="off">
           <label class="btn btn-outline-secondary btn-lg" for="toggleReroll">Auto Reroll</label>
 
-          <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-secondary m-1" role="button" data-mdb-ripple-color="dark" data-bs-toggle="modal" data-bs-target="#settings" style="scale:1.5"><i class="fa-solid fa-gear"></i></a>
+          <button data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-secondary mx-2" data-mdb-ripple-color="dark" data-bs-toggle="modal" data-bs-target="#settings" style="scale:1.5"><i class="fa-solid fa-gear"></i></button>
+          <button data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-secondary mx-2" data-mdb-ripple-color="dark" data-bs-toggle="modal" data-bs-target="#history" style="scale:1.5"><i class="fa-solid fa-bars"></i></button>
 
           <div class="modal fade" id="settings" tabindex="-1" aria-labelledby="settingsMenuTitle" style="display: none;">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
